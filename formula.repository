@@ -4,3 +4,8 @@
 \form#3:$a_x=\frac{d^2x}{dt^2}=\left(F_{gx} + \sum\limits_{n=1}^{n=N}\vec{F}_{a_{nx}} + F_{dx}\right) \times \frac{1}{m}$
 \form#4:$a_y=\frac{d^2y}{dt^2}=\left(F_{gy} + \sum\limits_{n=1}^{n=N}\vec{F}_{a_{ny}} + F_{dy}\right) \times \frac{1}{m}$
 \form#5:$F_{attractor} = \frac{-k}{\sqrt{x^2+y^2}}$
+\form#6:$(-0.5, \sqrt{3}/2), (-0.5, -\sqrt{3}/2), (1, 0)$
+\form#7:$(-0.5, \sqrt{3}/2)$
+\form#8:$(-0.5, -\sqrt{3}/2)$
+\form#9:$(1, 0)$
+\form#10:$F_{attractor} = \frac{-k}{x^2+y^2}$
