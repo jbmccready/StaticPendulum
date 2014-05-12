@@ -6,22 +6,53 @@
 #include <array>
 #include <vector>
 
+/*! \mainpage
+ *
+ * \section intro_sec Introduction
+ *
+ * This is a modular code base for numerically integrating systems of differential equations across large sets of initial conditions.
+ * Documentation is under construction.
+ */
+
 typedef std::array< double , 4 > state_type;
 
-struct attractor {
-    double x; // x position
-    double y; // y position
-    double k; // Coulomb-like interaction k/r^2 force constant (N*m^2)
-};
+//! Pendulum function object that returns the derivative of the current state.
 
+/*! The pendulum system is described by the following system of differential equations:
+ *
+ * \f$\vec{F}_{g}=-mg\frac{\sqrt{1-\frac{x^2+y^2}{L^2}}}{L}(x\hat{i}+y\hat{j})\f$ (force due to gravity)
+ *
+ * \f$\vec{F}_{a_n(x_n,y_n)}=\frac{-k[(x-x_n)\hat{i}+(y-y_n)\hat{j}]}{\left[(x-x_n)^2+(y-y_n)^2+\left(d+L-\sqrt{L^2-\left(x^2+y^2\right)}\right)\right]^{3/2}}\f$ (force due to attractor)
+ *
+ * \f$\vec{F}_{d}=-b(v_{x}\hat{i}+v_{y}\hat{j})\f$ (force due to dampening)
+ *
+ * \f$a_x=\frac{d^2x}{dt^2}=\left(F_{gx} + \sum\limits_{n=1}^{n=N}\vec{F}_{a_{nx}} + F_{dx}\right) \times \frac{1}{m}\f$ (acceleration in x direction)
+ *
+ * \f$a_y=\frac{d^2y}{dt^2}=\left(F_{gy} + \sum\limits_{n=1}^{n=N}\vec{F}_{a_{ny}} + F_{dy}\right) \times \frac{1}{m}\f$ (acceleration in y direction)
+ *
+ * Where m is the mass of the pendulum head, L is the length of the pendulum, g is the acceleration due to gravity, b is the dampening coefficient,
+ * and d is the distance between the end of the pendulum at rest and the base plate of attractors.
+ *
+ * The system parameters are modified as public member variables while the attractors are modified by calling the respective member functions.
+ *
+ * The function is called using an overloaded () operator and returns through a reference parameter the derivative of the state passed in.
+ */
 class pendulum_system {
 public:
-    double d = 0.05; // Distance from the end of the pendulum to the base plate (m)
-    double m = 1.0; // Mass of the bob on the end of the pendulum (kg)
-    double g = 9.8; // Acceleration due to gravity (m/s^2)
-    double b = 0.2; // Linear drag coefficient (kg/s)
-    double L = 10.0; // Length of the pendulum (m)
-    std::vector<attractor> attractor_list; // Attractor position list
+
+    //! Container for an attractor, stores the position as an x-y coordinate, and an attractive force coefficient.
+    struct attractor {
+        double x; /*!< x coordinate position. */
+        double y; /*!< y coordinate position. */
+        double k; /*!< Attractive force coefficient where \f$F_{attractor} = \frac{-k}{\sqrt{x^2+y^2}}\f$ */
+    };
+
+    double d = 0.05; /*!< Distance between the pendulum head at rest and the base plate. */
+    double m = 1.0; /*!< Mass of the head of the pendulum. */
+    double g = 9.8; /*!< Acceleration due to gravity. */
+    double b = 0.2; /*!< Linear drag coefficient. */
+    double L = 10.0; /*!< Length of the pendulum. */
+    std::vector<attractor> attractor_list; /*!< List of attractors for the system. */
 
     // Default constructed magnet positions and strengths
     pendulum_system() {
