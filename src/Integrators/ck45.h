@@ -2,7 +2,15 @@
 #define CK45_H
 #include <array>
 #include <algorithm>
-// Cash and Karp Runge Kutta order 4/5 adapative step integrator
+
+/*!
+ * \brief Cash and Karp embedded Runge Kutta order 5(4) adaptive step integrator.
+ *
+ * See: J. R. Cash, A. H. Karp. “A Variable Order Runge-Kutta Method for Initial Value Problems with
+ * Rapidly Varying Right-Hand Sides.” ACM Transactions on Mathematical Software, Vol. 16, No. 3, 1990.
+ *
+ * And Wikipedia: http://en.wikipedia.org/wiki/Cash-Karp_method
+ */
 class ck45
 {
 public:
@@ -10,15 +18,17 @@ public:
 
     // do_step attempts to perform one integration step, if successful returns 1 and updates the state, time and step size.
     // if unsuccessful returns 0 and adjusts the step size.
+
+    //! Performs one step for a given state and system, updates the state, time and step size. Returns 1 if successful, 0 if not; in either case udates the step size.
     template<typename system, typename state_type>
     int do_step (const system &dxdt, state_type &x, double &t, double &h) const;
 
     void set_tolerance(double relative_tolerance, double absolute_tolerance);
     void set_max_step_size(double max_step_size);
 private:
-    double m_rel_tol = 1e-6; // relative error tolerance for the adaptive integrator
-    double m_abs_tol = 1e-6; // absolute error tolerance for the adaptive integrator
-    double m_max_step_size = 0.1; // maximum stepsize
+    double m_rel_tol = 1e-6;
+    double m_abs_tol = 1e-6;
+    double m_max_step_size = 0.1;
 
     // coefficients for method
     static constexpr double c[6] = {0.0, 1.0/5.0, 3.0/10.0, 3.0/5.0, 1.0, 7.0/8.0};

@@ -44,7 +44,7 @@ public:
     struct attractor {
         double x; /*!< x coordinate position. */
         double y; /*!< y coordinate position. */
-        double k; /*!< Attractive force coefficient where \f$F_{attractor} = \frac{-k}{\sqrt{x^2+y^2}}\f$ */
+        double k; /*!< Attractive force coefficient where \f$F_{attractor} = \frac{-k}{x^2+y^2}\f$ */
     };
 
     double d = 0.05; /*!< Distance between the pendulum head at rest and the base plate. */
@@ -54,20 +54,28 @@ public:
     double L = 10.0; /*!< Length of the pendulum. */
     std::vector<attractor> attractor_list; /*!< List of attractors for the system. */
 
-    // Default constructed magnet positions and strengths
+    //! Default constructor sets k = 1.0 for three attractors positioned at: \f$(-0.5, \sqrt{3}/2)\f$, \f$(-0.5, -\sqrt{3}/2)\f$, and \f$(1, 0)\f$.
     pendulum_system() {
         attractor_list.push_back(attractor{-0.5, sqrt(3.0)/2.0, 1.0});
         attractor_list.push_back(attractor{-0.5, -sqrt(3.0)/2.0, 1.0});
         attractor_list.push_back(attractor{1.0, 0.0, 1.0});
     }
 
-    // Functor call for the system
-    void operator()(const state_type &x, state_type &dxdt, const double /* t */) const; // no time dependence
+    //! Function call that returns the derivative of the current state.
+    void operator()(const state_type &x /*!< Current state input. */,
+                    state_type &dxdt /*!< Derivative of the state, value modified by reference. */,
+                    const double t /*!< Note: no time dependence. Parameter here to fit signature for integration.*/) const;
 
-    // methods for adding, removing and adjusting attractors
+    //! Add an attractor at position (x_position, y_position) with attractive force coefficient attraction_strength.
     void add_attractor(double x_position, double y_position, double attraction_strength);
+
+    //! Set new position and attraction strength for already existing attractor at an index.
     void set_attractor(int index, double x_position, double y_position, double attraction_strength);
+
+    //! Set all the attractor strengths to the same value.
     void set_all_attractor_strengths(double attraction_strength);
+
+    //! Clear all attractors.
     void clear_attractors();
 };
 

@@ -1,12 +1,18 @@
 #ifndef RK4_H
 #define RK4_H
 #include <array>
-// classic runge-kutta 4 method
 
+/*!
+ * \brief Classic runge-kutta 4 method.
+ *
+ * Simple non-adaptive runge-kutta method, see Wikipedia: http://en.wikipedia.org/wiki/Runge-Kutta_methods#The_Runge.E2.80.93Kutta_method
+ */
 class rk4
 {
 public:
     rk4() {}
+
+    //! Performs one step and returns 1.
     template<typename system, typename state_type>
     int do_step (const system &dxdt, state_type &x, double &t, const double h)
     {
