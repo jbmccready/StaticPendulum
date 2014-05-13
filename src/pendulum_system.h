@@ -6,14 +6,6 @@
 #include <array>
 #include <vector>
 
-/*! \mainpage
- *
- * \section intro_sec Introduction
- *
- * This is a modular code base for numerically integrating systems of differential equations across large sets of initial conditions.
- * Documentation is under construction.
- */
-
 typedef std::array< double , 4 > state_type;
 
 //! Pendulum function object that returns the derivative of the current state.

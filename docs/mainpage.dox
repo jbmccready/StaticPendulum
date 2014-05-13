@@ -1,0 +1,25 @@
+/*! \mainpage
+ *
+ * \section intro_sec Introduction
+ *
+ * This is a modular code base for numerically integrating systems of differential equations across large sets of initial conditions.
+ * The library is modularly broken into three classes that can interact: an integrator, a system, and a map/worker class.
+ * Qt classes are used for convenience, you can build the project using the Qt SDK - or strip out the Qt bits and use your own library
+ * for saving images and plots.
+ * All the code is released under the MIT license, Qt is licensed under LGPL.
+ * Documentation is still under construction.
+ * 
+ * Back to the GitHub repository: https://github.com/jbmccready/StaticPendulum/
+ * 
+ * \section integrator_sec Adding a New Integrator
+ * 
+ * The integrator has a do_step member function that takes in a state, a state container to hold the updated state after a step, a time, and a step size. 
+ * The new state, time and step size are modified by reference. The do_step member function returns 1 if it successfully performed a step
+ * and 0 if it did not. You can create your own integrator object with a do_step member function and follow this same 
+ * signature and it should work properly when passed to the pendulum map class.
+ * 
+ * \section system_sec Adding a New System and Mapper
+ * 
+ * You can add your own system of ordinary differential equations and respective map class that utilizes the integrators present in this library.
+ * If you keep them separate, modular and templated they can be added back to this library to serve as a resource.
+ */

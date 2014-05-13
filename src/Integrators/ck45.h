@@ -23,7 +23,18 @@ public:
     template<typename system, typename state_type>
     int do_step (const system &dxdt, state_type &x, double &t, double &h) const;
 
+    /*!
+     * \brief Set error tolerances for the integrator.
+     * \param relative_tolerance The relative error tolerance, controls the steps relative to the size of the step taken.
+     * \param absolute_tolerance The absolute error tolerance, controls the steps independent of the size of the step taken.
+     *
+     * \details Absolute tolerance is independent of the step taken while relative tolerance is weighted by the step taken.
+     * The mathematical formula used is the same as the one used by the boost odeint library:
+     * http://www.boost.org/doc/libs/1_53_0/libs/numeric/odeint/doc/html/boost_numeric_odeint/odeint_in_detail/steppers.html#boost_numeric_odeint.odeint_in_detail.steppers.controlled_steppers
+     */
     void set_tolerance(double relative_tolerance, double absolute_tolerance);
+
+    //! Set the maximum step size the integrator can take.
     void set_max_step_size(double max_step_size);
 private:
     double m_rel_tol = 1e-6;

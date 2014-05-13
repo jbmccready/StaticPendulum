@@ -13,7 +13,7 @@
 #include <QVector>
 
 typedef std::array< double , 4 > state_type;
-
+//! Container for a point, stores the start state, converge position as an attractor index, converge time, and integration step count.
 struct point_type
 {
     state_type start_state;
@@ -25,6 +25,8 @@ struct point_type
 typedef std::vector< std::vector<point_type> > map_type;
 typedef std::vector< std::vector<point_type> >::iterator map_iter;
 
+//! Class used to integrate points and maps for the pendulum system.
+
 
 template <typename integrator_type>
 class pendulum_map
@@ -32,40 +34,59 @@ class pendulum_map
 public:
     pendulum_map();
 
-    // parallel integrate and save colored map of convergence and grayscale map of integration time to convergence as png, file name is of the form position_map*filename*.png and time_map*filename*.png (without the asterisks)
+    //! Parallel integrate and save colored map of convergence and grayscale map of integration time as a png, file name is of the form position_map*filename*.png and time_map*filename*.png (without the asterisks)
     void save_integrated_map(pendulum_system &the_system, integrator_type &the_integrator, QString filename, QDomElement xml_element) const;
 
-    // parallel integrate the map
+    //! Parallel integrate the map, splits the map into chunks to be integrated on separate threads by pendulum_map::integrate_map
     void parallel_integrate_map(const pendulum_system &the_system, const integrator_type &the_integrator, map_type &the_map) const;
 
-    // integrate a single point
+    //! Integrate a single point of type point_type
     void integrate_point(const integrator_type &the_integrator, const pendulum_system &the_system, point_type &the_point) const;
 
-    // create a map of type map_type for the current x-y ranges and res
+    //! Create a map of type map_type (vector of vectors of point_type) for the current x-y ranges and resolution.
     map_type create_map_container() const;
 
-    // integrate points and stop after converging to an attractor or the middle, stores relevent point integration information inside the points in the process
+    //! Integrate a map of points and stop after converging to an attractor or the middle, stores relevent point integration information inside the points in the process.
     void integrate_map(const integrator_type &the_integrator, const pendulum_system &the_system, map_iter first, map_iter last) const;
 
-    // integration point with fixed integration time
+    //! Integrate a point with a fixed integration time.
     void fixed_integrate_point(const integrator_type &the_integrator, const pendulum_system &the_system, point_type &the_point) const;
 
-    // integrate map with fixed integration time
+    //! Integrate map with a fixed integration time.
     void fixed_integrate_map(const integrator_type &the_integrator, const pendulum_system &the_system, map_iter first, map_iter last) const;
 
-    //parallel integrate the map with fixed integration time
+    //! Parallel integrate the map with a fixed integration time.
     void fixed_parallel_integrate_map(const pendulum_system &the_system, const integrator_type &the_integrator, map_type &the_map) const;
 
     // basic property modifiers for the map, integration and colors for attractors NOTE: must have a color assigned for each attractor or the image will not form correctly
+    //! Set the x and y start and end positions and the resolution.
     void set_map(double x_start_position, double x_end_position, double y_start_position, double y_end_position, double resolution);
+
+    //! Set the converge tolerance for stopping the integration.
     void set_converge_tol(double position_tolerance, double mid_position_tolerance, double time_tolerance);
+
+    //! Set the thread count for parallel integration.
     void set_thread_count(unsigned int nthreads);
+
+    //! Set the initial step size for the integrator.
     void set_step_size(double step_size);
+
+    //! Set the end integration time (only used for fixed time integration).
     void set_end_time(double end_time);
+
+    //! Set the color for an attractor by its index.
     void set_attractor_color(int index, int r, int g, int b);
+
+    //! Add a color to the attractor color table.
     void add_attractor_color(int r, int g, int b);
+
+    //! Clear the color table.
     void clear_attractor_colors();
+
+    //! Set the color for points outside bounds.
     void set_no_converge_color(int r, int g, int b);
+
+    //! Set the color for points that converge to the middle.
     void set_mid_converge_color(int r, int g, int b);
 private:
     double m_res = 0.05; // resolution of the map
