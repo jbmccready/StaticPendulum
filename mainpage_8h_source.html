@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.7"/>
-<title>Static Pendulum: Main Page</title>
+<title>Static Pendulum: mainpage.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -36,9 +36,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </script>
   <div id="navrow1" class="tabs">
     <ul class="tablist">
-      <li class="current"><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="index.html"><span>Main&#160;Page</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
-      <li><a href="files.html"><span>Files</span></a></li>
+      <li class="current"><a href="files.html"><span>Files</span></a></li>
       <li>
         <div id="MSearchBox" class="MSearchBoxInactive">
         <span class="left">
@@ -55,6 +55,11 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
           </span>
         </div>
       </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>File&#160;List</span></a></li>
     </ul>
   </div>
 </div><!-- top -->
@@ -74,23 +79,14 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <div class="header">
   <div class="headertitle">
-<div class="title">Static Pendulum Documentation</div>  </div>
+<div class="title">mainpage.h</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><h1><a class="anchor" id="intro_sec"></a>
-Introduction</h1>
-<p>This is a modular code base for numerically integrating systems of differential equations across large sets of initial conditions. The library is modularly broken into three classes that can interact: an integrator, a system, and a map/worker class. Qt classes are used for convenience, you can build the project using the Qt SDK - or strip out the Qt bits and use your own library for saving images and plots. All the code is released under the MIT license, Qt is licensed under LGPL. Documentation is still under construction.</p>
-<p>Back to the GitHub repository: <a href="https://github.com/jbmccready/StaticPendulum/">https://github.com/jbmccready/StaticPendulum/</a></p>
-<h1><a class="anchor" id="integrator_sec"></a>
-Adding a New Integrator</h1>
-<p>The integrator has a do_step member function that takes in a state, a state container to hold the updated state after a step, a time, and a step size. The new state, time and step size are modified by reference. The do_step member function returns 1 if it successfully performed a step and 0 if it did not. You can create your own integrator object with a do_step member function and follow this same signature and it should work properly when passed to the pendulum map class.</p>
-<h1><a class="anchor" id="system_sec"></a>
-Adding a New System and Mapper</h1>
-<p>You can add your own system of ordinary differential equations and respective map class that utilizes the integrators present in this library. If you keep them separate, modular and templated they can be added back to this library to serve as a resource. </p>
-</div></div><!-- contents -->
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;</div>
+</div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue May 13 2014 15:14:12 for Static Pendulum by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Tue May 13 2014 14:51:03 for Static Pendulum by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>

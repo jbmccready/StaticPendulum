@@ -100,24 +100,62 @@ template&lt;typename system , typename state_type &gt; </td></tr>
 <tr class="memitem:a8d70c4609c0d1907ba52c304be597b2d"><td class="memTemplItemLeft" align="right" valign="top">int&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classck45.html#a8d70c4609c0d1907ba52c304be597b2d">do_step</a> (const system &amp;dxdt, state_type &amp;x, double &amp;t, double &amp;h) const </td></tr>
 <tr class="memdesc:a8d70c4609c0d1907ba52c304be597b2d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Performs one step for a given state and system, updates the state, time and step size. Returns 1 if successful, 0 if not; in either case udates the step size. <br /></td></tr>
 <tr class="separator:a8d70c4609c0d1907ba52c304be597b2d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aca83920028ec4070fb153f93f0ba69ad"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aca83920028ec4070fb153f93f0ba69ad"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>set_tolerance</b> (double relative_tolerance, double absolute_tolerance)</td></tr>
+<tr class="memitem:aca83920028ec4070fb153f93f0ba69ad"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classck45.html#aca83920028ec4070fb153f93f0ba69ad">set_tolerance</a> (double relative_tolerance, double absolute_tolerance)</td></tr>
+<tr class="memdesc:aca83920028ec4070fb153f93f0ba69ad"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set error tolerances for the integrator.  <a href="#aca83920028ec4070fb153f93f0ba69ad">More...</a><br /></td></tr>
 <tr class="separator:aca83920028ec4070fb153f93f0ba69ad"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a41c2d174358d63f0e5f56819e8a83b5c"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a41c2d174358d63f0e5f56819e8a83b5c"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>set_max_step_size</b> (double max_step_size)</td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classck45.html#a41c2d174358d63f0e5f56819e8a83b5c">set_max_step_size</a> (double max_step_size)</td></tr>
+<tr class="memdesc:a41c2d174358d63f0e5f56819e8a83b5c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the maximum step size the integrator can take. <br /></td></tr>
 <tr class="separator:a41c2d174358d63f0e5f56819e8a83b5c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Cash and Karp embedded Runge Kutta order 5(4) adaptive step integrator. </p>
 <p>See: J. R. Cash, A. H. Karp. “A Variable Order Runge-Kutta Method for Initial Value Problems with Rapidly Varying Right-Hand Sides.” ACM Transactions on Mathematical Software, Vol. 16, No. 3, 1990.</p>
 <p>And Wikipedia: <a href="http://en.wikipedia.org/wiki/Cash-Karp_method">http://en.wikipedia.org/wiki/Cash-Karp_method</a> </p>
-</div><hr/>The documentation for this class was generated from the following file:<ul>
+</div><h2 class="groupheader">Member Function Documentation</h2>
+<a class="anchor" id="aca83920028ec4070fb153f93f0ba69ad"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ck45::set_tolerance </td>
+          <td>(</td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>relative_tolerance</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>absolute_tolerance</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Set error tolerances for the integrator. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">relative_tolerance</td><td>The relative error tolerance, controls the steps relative to the size of the step taken. </td></tr>
+    <tr><td class="paramname">absolute_tolerance</td><td>The absolute error tolerance, controls the steps independent of the size of the step taken.</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>Absolute tolerance is independent of the step taken while relative tolerance is weighted by the step taken. The mathematical formula used is the same as the one used by the boost odeint library: <a href="http://www.boost.org/doc/libs/1_53_0/libs/numeric/odeint/doc/html/boost_numeric_odeint/odeint_in_detail/steppers.html#boost_numeric_odeint.odeint_in_detail.steppers.controlled_steppers">http://www.boost.org/doc/libs/1_53_0/libs/numeric/odeint/doc/html/boost_numeric_odeint/odeint_in_detail/steppers.html#boost_numeric_odeint.odeint_in_detail.steppers.controlled_steppers</a> </p>
+
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following file:<ul>
 <li>/home/jbm/StaticPendulum/src/Integrators/<a class="el" href="ck45_8h_source.html">ck45.h</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sun May 11 2014 22:33:58 for Static Pendulum by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Tue May 13 2014 15:14:12 for Static Pendulum by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>

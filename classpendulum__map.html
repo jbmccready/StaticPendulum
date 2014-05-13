@@ -87,71 +87,99 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">pendulum_map&lt; integrator_type &gt; Class Template Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Class used to integrate points and maps for the pendulum system.  
+ <a href="classpendulum__map.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="pendulum__map_8h_source.html">pendulum_map.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a68528f08a8e38393bade9e65ec57c6df"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a68528f08a8e38393bade9e65ec57c6df"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>save_integrated_map</b> (<a class="el" href="classpendulum__system.html">pendulum_system</a> &amp;the_system, integrator_type &amp;the_integrator, QString filename, QDomElement xml_element) const </td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpendulum__map.html#a68528f08a8e38393bade9e65ec57c6df">save_integrated_map</a> (<a class="el" href="classpendulum__system.html">pendulum_system</a> &amp;the_system, integrator_type &amp;the_integrator, QString filename, QDomElement xml_element) const </td></tr>
+<tr class="memdesc:a68528f08a8e38393bade9e65ec57c6df"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parallel integrate and save colored map of convergence and grayscale map of integration time as a png, file name is of the form position_map*filename*.png and time_map*filename*.png (without the asterisks) <br /></td></tr>
 <tr class="separator:a68528f08a8e38393bade9e65ec57c6df"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a319db4a6041f683662428758905899ea"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a319db4a6041f683662428758905899ea"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>parallel_integrate_map</b> (const <a class="el" href="classpendulum__system.html">pendulum_system</a> &amp;the_system, const integrator_type &amp;the_integrator, map_type &amp;the_map) const </td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpendulum__map.html#a319db4a6041f683662428758905899ea">parallel_integrate_map</a> (const <a class="el" href="classpendulum__system.html">pendulum_system</a> &amp;the_system, const integrator_type &amp;the_integrator, map_type &amp;the_map) const </td></tr>
+<tr class="memdesc:a319db4a6041f683662428758905899ea"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parallel integrate the map, splits the map into chunks to be integrated on separate threads by <a class="el" href="classpendulum__map.html#ab9b9534deffa342af6c87787ed917324" title="Integrate a map of points and stop after converging to an attractor or the middle, stores relevent point integration information inside the points in the process. ">pendulum_map::integrate_map</a>. <br /></td></tr>
 <tr class="separator:a319db4a6041f683662428758905899ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae42d307c21eb0fd3d62cde0e5f5f30ac"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae42d307c21eb0fd3d62cde0e5f5f30ac"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>integrate_point</b> (const integrator_type &amp;the_integrator, const <a class="el" href="classpendulum__system.html">pendulum_system</a> &amp;the_system, <a class="el" href="structpoint__type.html">point_type</a> &amp;the_point) const </td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpendulum__map.html#ae42d307c21eb0fd3d62cde0e5f5f30ac">integrate_point</a> (const integrator_type &amp;the_integrator, const <a class="el" href="classpendulum__system.html">pendulum_system</a> &amp;the_system, <a class="el" href="structpoint__type.html">point_type</a> &amp;the_point) const </td></tr>
+<tr class="memdesc:ae42d307c21eb0fd3d62cde0e5f5f30ac"><td class="mdescLeft">&#160;</td><td class="mdescRight">Integrate a single point of type <a class="el" href="structpoint__type.html" title="Container for a point, stores the start state, converge position as an attractor index, converge time, and integration step count. ">point_type</a>. <br /></td></tr>
 <tr class="separator:ae42d307c21eb0fd3d62cde0e5f5f30ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3d8772c123af33cd2f5c1802132f8c0d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3d8772c123af33cd2f5c1802132f8c0d"></a>
-map_type&#160;</td><td class="memItemRight" valign="bottom"><b>create_map_container</b> () const </td></tr>
+map_type&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpendulum__map.html#a3d8772c123af33cd2f5c1802132f8c0d">create_map_container</a> () const </td></tr>
+<tr class="memdesc:a3d8772c123af33cd2f5c1802132f8c0d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create a map of type map_type (vector of vectors of <a class="el" href="structpoint__type.html" title="Container for a point, stores the start state, converge position as an attractor index, converge time, and integration step count. ">point_type</a>) for the current x-y ranges and resolution. <br /></td></tr>
 <tr class="separator:a3d8772c123af33cd2f5c1802132f8c0d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab9b9534deffa342af6c87787ed917324"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab9b9534deffa342af6c87787ed917324"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>integrate_map</b> (const integrator_type &amp;the_integrator, const <a class="el" href="classpendulum__system.html">pendulum_system</a> &amp;the_system, map_iter first, map_iter last) const </td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpendulum__map.html#ab9b9534deffa342af6c87787ed917324">integrate_map</a> (const integrator_type &amp;the_integrator, const <a class="el" href="classpendulum__system.html">pendulum_system</a> &amp;the_system, map_iter first, map_iter last) const </td></tr>
+<tr class="memdesc:ab9b9534deffa342af6c87787ed917324"><td class="mdescLeft">&#160;</td><td class="mdescRight">Integrate a map of points and stop after converging to an attractor or the middle, stores relevent point integration information inside the points in the process. <br /></td></tr>
 <tr class="separator:ab9b9534deffa342af6c87787ed917324"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af346761d3f8fe7da7b32c652d977196c"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af346761d3f8fe7da7b32c652d977196c"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>fixed_integrate_point</b> (const integrator_type &amp;the_integrator, const <a class="el" href="classpendulum__system.html">pendulum_system</a> &amp;the_system, <a class="el" href="structpoint__type.html">point_type</a> &amp;the_point) const </td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpendulum__map.html#af346761d3f8fe7da7b32c652d977196c">fixed_integrate_point</a> (const integrator_type &amp;the_integrator, const <a class="el" href="classpendulum__system.html">pendulum_system</a> &amp;the_system, <a class="el" href="structpoint__type.html">point_type</a> &amp;the_point) const </td></tr>
+<tr class="memdesc:af346761d3f8fe7da7b32c652d977196c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Integrate a point with a fixed integration time. <br /></td></tr>
 <tr class="separator:af346761d3f8fe7da7b32c652d977196c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a01bd32fce63920ae267fbdacde0220fa"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a01bd32fce63920ae267fbdacde0220fa"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>fixed_integrate_map</b> (const integrator_type &amp;the_integrator, const <a class="el" href="classpendulum__system.html">pendulum_system</a> &amp;the_system, map_iter first, map_iter last) const </td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpendulum__map.html#a01bd32fce63920ae267fbdacde0220fa">fixed_integrate_map</a> (const integrator_type &amp;the_integrator, const <a class="el" href="classpendulum__system.html">pendulum_system</a> &amp;the_system, map_iter first, map_iter last) const </td></tr>
+<tr class="memdesc:a01bd32fce63920ae267fbdacde0220fa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Integrate map with a fixed integration time. <br /></td></tr>
 <tr class="separator:a01bd32fce63920ae267fbdacde0220fa"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a10c54ef72b01f32f9d3039daa76d180b"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a10c54ef72b01f32f9d3039daa76d180b"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>fixed_parallel_integrate_map</b> (const <a class="el" href="classpendulum__system.html">pendulum_system</a> &amp;the_system, const integrator_type &amp;the_integrator, map_type &amp;the_map) const </td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpendulum__map.html#a10c54ef72b01f32f9d3039daa76d180b">fixed_parallel_integrate_map</a> (const <a class="el" href="classpendulum__system.html">pendulum_system</a> &amp;the_system, const integrator_type &amp;the_integrator, map_type &amp;the_map) const </td></tr>
+<tr class="memdesc:a10c54ef72b01f32f9d3039daa76d180b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parallel integrate the map with a fixed integration time. <br /></td></tr>
 <tr class="separator:a10c54ef72b01f32f9d3039daa76d180b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a44827c55ee09a339cb5049c1b4583aa6"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a44827c55ee09a339cb5049c1b4583aa6"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>set_map</b> (double x_start_position, double x_end_position, double y_start_position, double y_end_position, double resolution)</td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpendulum__map.html#a44827c55ee09a339cb5049c1b4583aa6">set_map</a> (double x_start_position, double x_end_position, double y_start_position, double y_end_position, double resolution)</td></tr>
+<tr class="memdesc:a44827c55ee09a339cb5049c1b4583aa6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the x and y start and end positions and the resolution. <br /></td></tr>
 <tr class="separator:a44827c55ee09a339cb5049c1b4583aa6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af978304b7d40aaab2f580ab729c3b14d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af978304b7d40aaab2f580ab729c3b14d"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>set_converge_tol</b> (double position_tolerance, double mid_position_tolerance, double time_tolerance)</td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpendulum__map.html#af978304b7d40aaab2f580ab729c3b14d">set_converge_tol</a> (double position_tolerance, double mid_position_tolerance, double time_tolerance)</td></tr>
+<tr class="memdesc:af978304b7d40aaab2f580ab729c3b14d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the converge tolerance for stopping the integration. <br /></td></tr>
 <tr class="separator:af978304b7d40aaab2f580ab729c3b14d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a189a915f2f651acb2d48dbb43298b45d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a189a915f2f651acb2d48dbb43298b45d"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>set_thread_count</b> (unsigned int nthreads)</td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpendulum__map.html#a189a915f2f651acb2d48dbb43298b45d">set_thread_count</a> (unsigned int nthreads)</td></tr>
+<tr class="memdesc:a189a915f2f651acb2d48dbb43298b45d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the thread count for parallel integration. <br /></td></tr>
 <tr class="separator:a189a915f2f651acb2d48dbb43298b45d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a233421243b0fd409c707e159278aec12"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a233421243b0fd409c707e159278aec12"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>set_step_size</b> (double step_size)</td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpendulum__map.html#a233421243b0fd409c707e159278aec12">set_step_size</a> (double step_size)</td></tr>
+<tr class="memdesc:a233421243b0fd409c707e159278aec12"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the initial step size for the integrator. <br /></td></tr>
 <tr class="separator:a233421243b0fd409c707e159278aec12"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae391f9c366227f6640c4505f2d2b7442"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae391f9c366227f6640c4505f2d2b7442"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>set_end_time</b> (double end_time)</td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpendulum__map.html#ae391f9c366227f6640c4505f2d2b7442">set_end_time</a> (double end_time)</td></tr>
+<tr class="memdesc:ae391f9c366227f6640c4505f2d2b7442"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the end integration time (only used for fixed time integration). <br /></td></tr>
 <tr class="separator:ae391f9c366227f6640c4505f2d2b7442"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3e12addb5fb34061b301a97edce61328"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3e12addb5fb34061b301a97edce61328"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>set_attractor_color</b> (int index, int r, int g, int b)</td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpendulum__map.html#a3e12addb5fb34061b301a97edce61328">set_attractor_color</a> (int index, int r, int g, int b)</td></tr>
+<tr class="memdesc:a3e12addb5fb34061b301a97edce61328"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the color for an attractor by its index. <br /></td></tr>
 <tr class="separator:a3e12addb5fb34061b301a97edce61328"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a03268ac7ff56b26879ef6adc981738a2"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a03268ac7ff56b26879ef6adc981738a2"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>add_attractor_color</b> (int r, int g, int b)</td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpendulum__map.html#a03268ac7ff56b26879ef6adc981738a2">add_attractor_color</a> (int r, int g, int b)</td></tr>
+<tr class="memdesc:a03268ac7ff56b26879ef6adc981738a2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add a color to the attractor color table. <br /></td></tr>
 <tr class="separator:a03268ac7ff56b26879ef6adc981738a2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0c1e71ff4dac5dd3442c85259c94e83e"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0c1e71ff4dac5dd3442c85259c94e83e"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>clear_attractor_colors</b> ()</td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpendulum__map.html#a0c1e71ff4dac5dd3442c85259c94e83e">clear_attractor_colors</a> ()</td></tr>
+<tr class="memdesc:a0c1e71ff4dac5dd3442c85259c94e83e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clear the color table. <br /></td></tr>
 <tr class="separator:a0c1e71ff4dac5dd3442c85259c94e83e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a24c208a2e8040e68906d40b859883f16"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a24c208a2e8040e68906d40b859883f16"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>set_no_converge_color</b> (int r, int g, int b)</td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpendulum__map.html#a24c208a2e8040e68906d40b859883f16">set_no_converge_color</a> (int r, int g, int b)</td></tr>
+<tr class="memdesc:a24c208a2e8040e68906d40b859883f16"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the color for points outside bounds. <br /></td></tr>
 <tr class="separator:a24c208a2e8040e68906d40b859883f16"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0ebe735011d77660cf9b3f3c125b1543"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0ebe735011d77660cf9b3f3c125b1543"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>set_mid_converge_color</b> (int r, int g, int b)</td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpendulum__map.html#a0ebe735011d77660cf9b3f3c125b1543">set_mid_converge_color</a> (int r, int g, int b)</td></tr>
+<tr class="memdesc:a0ebe735011d77660cf9b3f3c125b1543"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the color for points that converge to the middle. <br /></td></tr>
 <tr class="separator:a0ebe735011d77660cf9b3f3c125b1543"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<hr/>The documentation for this class was generated from the following file:<ul>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><h3>template&lt;typename integrator_type&gt;<br />
+class pendulum_map&lt; integrator_type &gt;</h3>
+
+<p>Class used to integrate points and maps for the pendulum system. </p>
+</div><hr/>The documentation for this class was generated from the following file:<ul>
 <li>/home/jbm/StaticPendulum/src/<a class="el" href="pendulum__map_8h_source.html">pendulum_map.h</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sun May 11 2014 22:33:58 for Static Pendulum by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Tue May 13 2014 15:14:12 for Static Pendulum by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>
